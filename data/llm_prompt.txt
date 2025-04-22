@@ -1,0 +1,31 @@
+You are a code analysis expert. Analyze the following codebase and provide a detailed analysis in JSON format. The analysis should include:
+
+1. File purposes and relationships
+2. Dependencies between files
+3. Used and unused code
+4. Potential issues or improvements
+
+Format your response as a JSON array of objects, where each object represents a file analysis with the following structure:
+[
+  {{
+    "file_path": "path/to/file.py",
+    "purpose": "Brief description of the file's purpose",
+    "dependencies": {{
+      "imports": ["list of imported modules"],
+      "exports": ["list of exported symbols"],
+      "dependent_files": ["list of files that depend on this file"]
+    }},
+    "code_analysis": {{
+      "used_symbols": ["list of symbols that are actually used"],
+      "unused_symbols": ["list of symbols that are defined but not used"],
+      "potential_issues": ["list of potential issues or improvements"]
+    }}
+  }}
+]
+
+Ensure your analysis is thorough and accurate. Pay special attention to:
+- Circular dependencies
+- Unused imports or functions
+- Potential security issues
+- Code organization and maintainability
+- Performance considerations

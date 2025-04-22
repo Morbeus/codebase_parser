@@ -1,0 +1,22 @@
+[
+  {
+    "file": "utils/helpers.py",
+    "reason": "To use the calculate_sum function",
+    "usage": "calculate_sum is called to add two numbers"
+  },
+  {
+    "file": "config/settings.py",
+    "reason": "To access the API_KEY variable",
+    "usage": "API_KEY is printed to demonstrate accessing config settings"
+  },
+  {
+    "file": "models/user.py",
+    "reason": "To instantiate the User class",
+    "usage": "A User object is created and used"
+  },
+  {
+    "file": "importlib",
+    "reason": "To dynamically import a module",
+    "usage": "Used for the dynamic import of the models.product module"
+  }
+]

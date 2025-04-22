@@ -1,0 +1,352 @@
+{
+  "files": {
+    "__init__.py": {
+      "content": "\"\"\"\nTest project for codebase parser.\n\"\"\" ",
+      "imports": [],
+      "exports": [],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": []
+    },
+    "main.py": {
+      "content": "from utils.helpers import calculate_sum\nfrom models.user import User\nfrom config.settings import API_KEY\nimport importlib\n\n# Dynamic import\nmodule_name = \"models.product\"\ndynamic_module = __import__(module_name)\n\ndef main():\n    result = calculate_sum(5, 3)\n    user = User(\"John Doe\")\n    print(f\"Sum: {result}\")\n    print(f\"User: {user.name}\")\n    print(f\"API Key: {API_KEY}\")\n    \n    # Dynamic import usage\n    Product = getattr(dynamic_module, \"Product\")\n    product = Product(\"Test Product\")\n    print(f\"Product: {product.name}\")\n\nif __name__ == \"__main__\":\n    main() ",
+      "imports": [
+        {
+          "module": "utils.helpers",
+          "name": "calculate_sum",
+          "alias": null
+        },
+        {
+          "module": "models.user",
+          "name": "User",
+          "alias": null
+        },
+        {
+          "module": "config.settings",
+          "name": "API_KEY",
+          "alias": null
+        },
+        {
+          "module": "importlib",
+          "name": null,
+          "alias": null
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "alias": null
+        }
+      ],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": [
+        "utils/helpers.py",
+        "models/user.py",
+        "config/settings.py"
+      ]
+    },
+    "config/settings.py": {
+      "content": "import os\nfrom typing import Dict, Any\n\n# Basic settings\nAPI_KEY = \"test-api-key-123\"\nDEBUG = True\nDATABASE_URL = \"postgresql://user:pass@localhost:5432/db\"\n\n# Dynamic settings based on environment\nENV = os.getenv(\"ENV\", \"development\")\nSETTINGS: Dict[str, Any] = {\n    \"development\": {\n        \"debug\": True,\n        \"log_level\": \"DEBUG\"\n    },\n    \"production\": {\n        \"debug\": False,\n        \"log_level\": \"INFO\"\n    }\n}\n\n# Current environment settings\nCURRENT_SETTINGS = SETTINGS[ENV]\n\n# Dynamic configuration\ndef get_setting(key: str, default: Any = None) -> Any:\n    \"\"\"Dynamically get a setting value.\"\"\"\n    return CURRENT_SETTINGS.get(key, default) ",
+      "imports": [
+        {
+          "module": "os",
+          "name": null,
+          "alias": null
+        },
+        {
+          "module": "typing",
+          "name": "Dict",
+          "alias": null
+        },
+        {
+          "module": "typing",
+          "name": "Any",
+          "alias": null
+        }
+      ],
+      "exports": [
+        {
+          "name": "get_setting",
+          "alias": null
+        }
+      ],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": []
+    },
+    "utils/helpers.py": {
+      "content": "from config.settings import DEBUG\nimport sys\nfrom typing import Union, Optional\n\n# Conditional import\nif sys.version_info >= (3, 8):\n    from typing import Literal\nelse:\n    from typing_extensions import Literal\n\ndef calculate_sum(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:\n    \"\"\"Calculate the sum of two numbers.\"\"\"\n    if DEBUG:\n        print(f\"Calculating sum of {a} and {b}\")\n    return a + b\n\ndef calculate_product(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:\n    \"\"\"Calculate the product of two numbers.\"\"\"\n    if DEBUG:\n        print(f\"Calculating product of {a} and {b}\")\n    return a * b\n\n# Type alias export\nNumber = Union[int, float]\n\n# Dynamic function creation\ndef create_operation(operation: Literal[\"add\", \"multiply\"]) -> callable:\n    \"\"\"Dynamically create an operation function.\"\"\"\n    if operation == \"add\":\n        return calculate_sum\n    return calculate_product ",
+      "imports": [
+        {
+          "module": "config.settings",
+          "name": "DEBUG",
+          "alias": null
+        },
+        {
+          "module": "sys",
+          "name": null,
+          "alias": null
+        },
+        {
+          "module": "typing",
+          "name": "Union",
+          "alias": null
+        },
+        {
+          "module": "typing",
+          "name": "Optional",
+          "alias": null
+        },
+        {
+          "module": "typing",
+          "name": "Literal",
+          "alias": null
+        },
+        {
+          "module": "typing_extensions",
+          "name": "Literal",
+          "alias": null
+        }
+      ],
+      "exports": [
+        {
+          "name": "calculate_sum",
+          "alias": null
+        },
+        {
+          "name": "calculate_product",
+          "alias": null
+        },
+        {
+          "name": "create_operation",
+          "alias": null
+        }
+      ],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": [
+        "config/settings.py"
+      ]
+    },
+    "models/user.py": {
+      "content": "from models.product import Product  # This completes the circular import\n\nclass User:\n    def __init__(self, name: str):\n        self.name = name\n        self.is_active = True\n        self.products = []  # List of products owned by the user\n    \n    def deactivate(self):\n        \"\"\"Deactivate the user.\"\"\"\n        self.is_active = False\n    \n    def activate(self):\n        \"\"\"Activate the user.\"\"\"\n        self.is_active = True\n    \n    def add_product(self, product: Product):\n        \"\"\"Add a product to user's collection.\"\"\"\n        self.products.append(product)\n        product.owner = self ",
+      "imports": [
+        {
+          "module": "models.product",
+          "name": "Product",
+          "alias": null
+        }
+      ],
+      "exports": [
+        {
+          "name": "User",
+          "alias": null
+        },
+        {
+          "name": "__init__",
+          "alias": null
+        },
+        {
+          "name": "deactivate",
+          "alias": null
+        },
+        {
+          "name": "activate",
+          "alias": null
+        },
+        {
+          "name": "add_product",
+          "alias": null
+        }
+      ],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": [
+        "models/product.py"
+      ]
+    },
+    "models/product.py": {
+      "content": "from models.user import User  # This creates a circular import\nfrom utils.helpers import calculate_product\n\nclass Product:\n    def __init__(self, name: str):\n        self.name = name\n        self.price = 0\n        self.owner = None\n    \n    def set_price(self, price: float):\n        \"\"\"Set the product price.\"\"\"\n        self.price = price\n    \n    def set_owner(self, user: User):\n        \"\"\"Set the product owner.\"\"\"\n        self.owner = user\n        # This creates a circular reference\n        user.products.append(self)\n    \n    def calculate_discount(self, percentage: float) -> float:\n        \"\"\"Calculate discounted price.\"\"\"\n        return calculate_product(self.price, (100 - percentage) / 100) ",
+      "imports": [
+        {
+          "module": "models.user",
+          "name": "User",
+          "alias": null
+        },
+        {
+          "module": "utils.helpers",
+          "name": "calculate_product",
+          "alias": null
+        }
+      ],
+      "exports": [
+        {
+          "name": "Product",
+          "alias": null
+        },
+        {
+          "name": "__init__",
+          "alias": null
+        },
+        {
+          "name": "set_price",
+          "alias": null
+        },
+        {
+          "name": "set_owner",
+          "alias": null
+        },
+        {
+          "name": "calculate_discount",
+          "alias": null
+        }
+      ],
+      "used_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "dependent_files": [
+        "utils/helpers.py",
+        "models/user.py"
+      ]
+    }
+  },
+  "dependency_graph": {
+    "__init__.py": [],
+    "main.py": [
+      "utils/helpers.py",
+      "models/user.py",
+      "config/settings.py"
+    ],
+    "config/settings.py": [],
+    "utils/helpers.py": [
+      "config/settings.py"
+    ],
+    "models/user.py": [
+      "models/product.py"
+    ],
+    "models/product.py": [
+      "utils/helpers.py",
+      "models/user.py"
+    ]
+  }
+}

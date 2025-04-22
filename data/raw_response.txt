@@ -1,0 +1,126 @@
+```json
+[
+  {
+    "file_path": "__init__.py",
+    "purpose": "Initialization file for the test project. It doesn't contain any direct functionality but is used for package initialization.",
+    "dependencies": {
+      "imports": [],
+      "exports": [],
+      "dependent_files": []
+    },
+    "code_analysis": {
+      "used_symbols": [],
+      "unused_symbols": [
+        "importlib",
+        "calculate_sum",
+        "calculate_product",
+        "Literal",
+        "API_KEY",
+        "main",
+        "ENV",
+        "os",
+        "User",
+        "Any",
+        "sys",
+        "Optional",
+        "Dict",
+        "Union",
+        "SETTINGS",
+        "Product",
+        "DEBUG",
+        "module_name",
+        "str",
+        "__import__"
+      ],
+      "potential_issues": [
+        "File contains references to symbols that are not used or defined within it."
+      ]
+    }
+  },
+  {
+    "file_path": "main.py",
+    "purpose": "Main entry point of the application. It demonstrates the use of dynamic imports, and the usage of functions and classes from other modules.",
+    "dependencies": {
+      "imports": ["utils.helpers", "models.user", "config.settings", "importlib"],
+      "exports": ["main"],
+      "dependent_files": ["utils/helpers.py", "models/user.py", "config/settings.py"]
+    },
+    "code_analysis": {
+      "used_symbols": ["calculate_sum", "User", "API_KEY", "importlib", "__import__", "Product"],
+      "unused_symbols": ["calculate_product", "Literal", "ENV", "os", "Any", "sys", "Optional", "Dict", "Union", "SETTINGS", "DEBUG", "module_name", "str"],
+      "potential_issues": [
+        "Unused imports and variables that could be removed for clarity and performance.",
+        "Dynamic import usage could lead to code that is harder to analyze and maintain."
+      ]
+    }
+  },
+  {
+    "file_path": "config/settings.py",
+    "purpose": "Defines application settings, including API keys, debug flags, and database URLs. It also includes a function to dynamically retrieve settings.",
+    "dependencies": {
+      "imports": ["os", "typing.Dict", "typing.Any"],
+      "exports": ["get_setting"],
+      "dependent_files": []
+    },
+    "code_analysis": {
+      "used_symbols": ["os", "Dict", "Any", "API_KEY", "DEBUG", "DATABASE_URL", "ENV", "SETTINGS", "get_setting"],
+      "unused_symbols": ["importlib", "calculate_sum", "calculate_product", "Literal", "main", "User", "sys", "Optional", "Union", "Product", "module_name", "str", "__import__"],
+      "potential_issues": [
+        "Potential security issue with hard-coded API keys and database URLs.",
+        "The use of environment variables is good, but there could be improvements in handling missing or incorrect configurations."
+      ]
+    }
+  },
+  {
+    "file_path": "utils/helpers.py",
+    "purpose": "Provides helper functions like calculating sum and product, and demonstrates conditional imports and dynamic function creation.",
+    "dependencies": {
+      "imports": ["config.settings", "sys", "typing.Union", "typing.Optional", "typing.Literal", "typing_extensions.Literal"],
+      "exports": ["calculate_sum", "calculate_product", "create_operation"],
+      "dependent_files": ["config/settings.py"]
+    },
+    "code_analysis": {
+      "used_symbols": ["DEBUG", "sys", "Union", "Optional", "Literal", "calculate_sum", "calculate_product", "create_operation"],
+      "unused_symbols": ["importlib", "API_KEY", "main", "ENV", "os", "User", "Any", "Dict", "SETTINGS", "Product", "module_name", "str", "__import__"],
+      "potential_issues": [
+        "Conditional import based on Python version could be simplified by using a compatibility library or updating the minimum supported Python version.",
+        "Debug print statements should be replaced with a logging framework."
+      ]
+    }
+  },
+  {
+    "file_path": "models/user.py",
+    "purpose": "Defines the User model, including methods for activating, deactivating, and adding products to a user.",
+    "dependencies": {
+      "imports": ["models.product"],
+      "exports": ["User"],
+      "dependent_files": ["models/product.py"]
+    },
+    "code_analysis": {
+      "used_symbols": ["Product", "User"],
+      "unused_symbols": ["importlib", "calculate_sum", "calculate_product", "Literal", "API_KEY", "main", "ENV", "os", "Any", "sys", "Optional", "Dict", "Union", "SETTINGS", "DEBUG", "module_name", "str", "__import__"],
+      "potential_issues": [
+        "Circular import with models.product could lead to import errors or unexpected behavior.",
+        "Consider using a relationship management system or ORM for handling product associations."
+      ]
+    }
+  },
+  {
+    "file_path": "models/product.py",
+    "purpose": "Defines the Product model, including methods for setting price, owner, and calculating discounts.",
+    "dependencies": {
+      "imports": ["models.user", "utils.helpers"],
+      "exports": ["Product"],
+      "dependent_files": ["utils/helpers.py", "models/user.py"]
+    },
+    "code_analysis": {
+      "used_symbols": ["User", "calculate_product", "Product"],
+      "unused_symbols": ["importlib", "calculate_sum", "Literal", "API_KEY", "main", "ENV", "os", "Any", "sys", "Optional", "Dict", "Union", "SETTINGS", "DEBUG", "module_name", "str", "__import__"],
+      "potential_issues": [
+        "Circular import with models.user could lead to import errors or unexpected behavior.",
+        "Circular reference between User and Product models could lead to memory leaks if not handled properly."
+      ]
+    }
+  }
+]
+```

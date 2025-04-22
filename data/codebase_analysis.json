@@ -1,0 +1,302 @@
+{
+  "dependencies": {
+    "__init__.py": [],
+    "main.py": [
+      {
+        "target": "utils/helpers.py",
+        "symbol": "calculate_sum",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "models/user.py",
+        "symbol": "User",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "../../../../../opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py",
+        "symbol": "importlib",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "config/settings.py",
+        "symbol": "API_KEY",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      }
+    ],
+    "config/settings.py": [
+      {
+        "target": "../../../../../opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/typing.py",
+        "symbol": "Dict",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "../frozen",
+        "symbol": "os",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      }
+    ],
+    "utils/helpers.py": [
+      {
+        "target": "../../../Library/Caches/pypoetry/virtualenvs/codebase-parser-xp3yL7G9-py3.12/lib/python3.12/site-packages/typing_extensions.py",
+        "symbol": "Literal",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "../../../../../opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/typing.py",
+        "symbol": "Union",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "../built-in",
+        "symbol": "sys",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "config/settings.py",
+        "symbol": "DEBUG",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      }
+    ],
+    "models/user.py": [
+      {
+        "target": "models/product.py",
+        "symbol": "Product",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      }
+    ],
+    "models/product.py": [
+      {
+        "target": "models/user.py",
+        "symbol": "User",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      },
+      {
+        "target": "utils/helpers.py",
+        "symbol": "calculate_product",
+        "alias": null,
+        "is_relative": false,
+        "is_dynamic": false
+      }
+    ],
+    "../../../../../opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py": [],
+    "../../../../../opt/homebrew/Cellar/python@3.12/3.12.6/Frameworks/Python.framework/Versions/3.12/lib/python3.12/typing.py": [],
+    "../frozen": [],
+    "../../../Library/Caches/pypoetry/virtualenvs/codebase-parser-xp3yL7G9-py3.12/lib/python3.12/site-packages/typing_extensions.py": [],
+    "../built-in": []
+  },
+  "exports": {
+    "__init__.py": [],
+    "main.py": [
+      {
+        "name": "Product",
+        "type": "variable",
+        "line_number": 18,
+        "docstring": null
+      },
+      {
+        "name": "module_name",
+        "type": "variable",
+        "line_number": 7,
+        "docstring": null
+      },
+      {
+        "name": "result",
+        "type": "variable",
+        "line_number": 11,
+        "docstring": null
+      },
+      {
+        "name": "main",
+        "type": "function",
+        "line_number": 10,
+        "docstring": null
+      },
+      {
+        "name": "product",
+        "type": "variable",
+        "line_number": 19,
+        "docstring": null
+      },
+      {
+        "name": "user",
+        "type": "variable",
+        "line_number": 12,
+        "docstring": null
+      },
+      {
+        "name": "dynamic_module",
+        "type": "variable",
+        "line_number": 8,
+        "docstring": null
+      }
+    ],
+    "config/settings.py": [
+      {
+        "name": "ENV",
+        "type": "variable",
+        "line_number": 10,
+        "docstring": null
+      },
+      {
+        "name": "DATABASE_URL",
+        "type": "variable",
+        "line_number": 7,
+        "docstring": null
+      },
+      {
+        "name": "DEBUG",
+        "type": "variable",
+        "line_number": 6,
+        "docstring": null
+      },
+      {
+        "name": "API_KEY",
+        "type": "variable",
+        "line_number": 5,
+        "docstring": null
+      },
+      {
+        "name": "get_setting",
+        "type": "function",
+        "line_number": 26,
+        "docstring": "Dynamically get a setting value."
+      },
+      {
+        "name": "CURRENT_SETTINGS",
+        "type": "variable",
+        "line_number": 23,
+        "docstring": null
+      }
+    ],
+    "utils/helpers.py": [
+      {
+        "name": "calculate_product",
+        "type": "function",
+        "line_number": 17,
+        "docstring": "Calculate the product of two numbers."
+      },
+      {
+        "name": "Number",
+        "type": "variable",
+        "line_number": 24,
+        "docstring": null
+      },
+      {
+        "name": "create_operation",
+        "type": "function",
+        "line_number": 27,
+        "docstring": "Dynamically create an operation function."
+      },
+      {
+        "name": "calculate_sum",
+        "type": "function",
+        "line_number": 11,
+        "docstring": "Calculate the sum of two numbers."
+      }
+    ],
+    "models/user.py": [
+      {
+        "name": "add_product",
+        "type": "function",
+        "line_number": 17,
+        "docstring": "Add a product to user's collection."
+      },
+      {
+        "name": "__init__",
+        "type": "function",
+        "line_number": 4,
+        "docstring": null
+      },
+      {
+        "name": "activate",
+        "type": "function",
+        "line_number": 13,
+        "docstring": "Activate the user."
+      },
+      {
+        "name": "deactivate",
+        "type": "function",
+        "line_number": 9,
+        "docstring": "Deactivate the user."
+      },
+      {
+        "name": "User",
+        "type": "class",
+        "line_number": 3,
+        "docstring": null
+      }
+    ],
+    "models/product.py": [
+      {
+        "name": "__init__",
+        "type": "function",
+        "line_number": 5,
+        "docstring": null
+      },
+      {
+        "name": "set_owner",
+        "type": "function",
+        "line_number": 14,
+        "docstring": "Set the product owner."
+      },
+      {
+        "name": "Product",
+        "type": "class",
+        "line_number": 4,
+        "docstring": null
+      },
+      {
+        "name": "calculate_discount",
+        "type": "function",
+        "line_number": 20,
+        "docstring": "Calculate discounted price."
+      },
+      {
+        "name": "set_price",
+        "type": "function",
+        "line_number": 10,
+        "docstring": "Set the product price."
+      }
+    ]
+  },
+  "dynamic_imports": {
+    "__init__.py": [],
+    "main.py": [
+      "__import__"
+    ],
+    "config/settings.py": [],
+    "utils/helpers.py": [],
+    "models/user.py": [],
+    "models/product.py": []
+  },
+  "circular_dependencies": [
+    [
+      "models/user.py",
+      "models/product.py"
+    ]
+  ]
+}
