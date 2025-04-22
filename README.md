@@ -81,11 +81,3 @@ poetry run pytest tests/
 1. Create a new module in `src/analyzer/`
 2. Add tests in `tests/`
 3. Update documentation in `docs/`
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
