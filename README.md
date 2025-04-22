@@ -45,30 +45,44 @@ poetry install
 
 ## Usage
 
-1. Prepare the environment:
-```bash
-cp .env.example .env
-# Edit .env to add your OpenAI API key
-```
+The analysis process consists of two steps:
 
-2. Run the analyzer:
+1. First, run the main script to parse the codebase and generate the context:
 ```bash
 poetry run python src/main.py <path_to_codebase>
 ```
 
-This will:
-- Parse the codebase
-- Generate a dependency graph
-- Analyze dead code
-- Create an LLM-powered analysis
-- Save results to JSON files
+2. Then, run the codebase agent to perform the LLM analysis:
+```bash
+poetry run python src/analyzer/codebase_agent.py
+```
+
+### Example: Test Project Analysis
+
+For the test project, the dependency graph shows the following relationships:
+
+```
+main.py
+├── models/user.py
+│   └── models/product.py
+│       └── models/user.py (circular dependency)
+├── utils/helpers.py
+│   └── config/settings.py
+└── config/settings.py
+```
+
+Key observations:
+- Circular dependency between `models/user.py` and `models/product.py`
+- `main.py` is the entry point with multiple dependencies
+- `utils/helpers.py` depends on configuration settings
+- `config/settings.py` is a leaf node with no dependencies
 
 ## Output Files
 
-- `llm_context.json`: Contains the prepared context for LLM analysis
-- `llm_analysis.json`: Contains the LLM's analysis of the codebase
-- `dependency_graph.png`: Visualization of the codebase dependencies
-- `raw_response.txt`: Debug file containing the raw LLM response
+- `data/llm_context.json`: Contains the prepared context for LLM analysis
+- `data/llm_analysis.json`: Contains the LLM's analysis of the codebase
+- `data/dependency_graph.png`: Visualization of the codebase dependencies
+- `data/raw_response.txt`: Debug file containing the raw LLM response
 
 ## Development
 
@@ -81,3 +95,4 @@ poetry run pytest tests/
 1. Create a new module in `src/analyzer/`
 2. Add tests in `tests/`
 3. Update documentation in `docs/`
+
