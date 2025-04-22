@@ -61,21 +61,19 @@ poetry run python src/analyzer/codebase_agent.py
 
 For the test project, the dependency graph shows the following relationships:
 
-```
-main.py
-├── models/user.py
-│   └── models/product.py
-│       └── models/user.py (circular dependency)
-├── utils/helpers.py
-│   └── config/settings.py
-└── config/settings.py
-```
+![Dependency Graph](data/dependency_graph.png)
+
+The graph above shows:
+- `main.py` as the central entry point
+- Dependencies between various modules like `typing.py`, `helpers.py`, and `settings.py`
+- Module relationships and import chains
+- Built-in Python imports and frozen modules
 
 Key observations:
-- Circular dependency between `models/user.py` and `models/product.py`
-- `main.py` is the entry point with multiple dependencies
-- `utils/helpers.py` depends on configuration settings
-- `config/settings.py` is a leaf node with no dependencies
+- `helpers.py` is a central module with multiple dependents
+- `typing_extensions.py` and `typing.py` provide type support
+- `settings.py` is referenced by multiple modules
+- Clean separation between utility modules and business logic
 
 ## Output Files
 
